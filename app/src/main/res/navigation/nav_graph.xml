@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/versusFragment">
+    <fragment
+        android:id="@+id/catsFragment"
+        android:name="com.astriex.catsvsdogs.ui.fragments.home.cats.CatsFragment"
+        android:label="fragment_cats"
+        tools:layout="@layout/fragment_cats" >
+        <action
+            android:id="@+id/action_catsFragment3_to_dogsFragment3"
+            app:destination="@id/dogsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/dogsFragment"
+        android:name="com.astriex.catsvsdogs.ui.fragments.home.dogs.DogsFragment"
+        android:label="fragment_dogs"
+        tools:layout="@layout/fragment_dogs" />
+    <fragment
+        android:id="@+id/versusFragment"
+        android:name="com.astriex.catsvsdogs.ui.fragments.home.versus.VersusFragment"
+        android:label="fragment_versus"
+        tools:layout="@layout/fragment_versus" >
+        <action
+            android:id="@+id/action_versusFragment2_to_catsFragment3"
+            app:destination="@id/catsFragment" />
+    </fragment>
+</navigation>
