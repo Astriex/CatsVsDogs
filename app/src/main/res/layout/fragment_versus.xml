@@ -1,13 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.fragments.home.versus.VersusFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="versus" />
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/ivCat"
+        android:layout_width="235dp"
+        android:layout_height="145dp"
+        android:layout_marginTop="28dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/image_border"
+        android:contentDescription="cat image"
+        android:cropToPadding="true"
+        android:scaleType="centerCrop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivDog"
+        android:layout_width="247dp"
+        android:layout_height="134dp"
+        android:layout_marginBottom="76dp"
+        android:adjustViewBounds="true"
+        android:background="@drawable/image_border"
+        android:contentDescription="dog image"
+        android:cropToPadding="true"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.536"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivCatVote"
+        android:layout_width="80dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="40dp"
+        android:contentDescription="Cat vote image"
+        android:src="@drawable/ic_cat_vote"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivCat" />
+
+    <ImageView
+        android:id="@+id/ivDogVote"
+        android:layout_width="78dp"
+        android:layout_height="79dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginBottom="36dp"
+        android:contentDescription="dog vote image"
+        android:src="@drawable/ic_dog_vote"
+        app:layout_constraintBottom_toTopOf="@+id/ivDog"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tvVs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="VS"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toTopOf="@+id/ivDogVote"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ivCatVote" />
+</androidx.constraintlayout.widget.ConstraintLayout>

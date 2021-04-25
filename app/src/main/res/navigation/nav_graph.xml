@@ -24,7 +24,7 @@
         android:label="fragment_versus"
         tools:layout="@layout/fragment_versus" >
         <action
-            android:id="@+id/action_versusFragment2_to_catsFragment3"
+            android:id="@+id/action_versusFragment_to_catsFragment"
             app:destination="@id/catsFragment" />
     </fragment>
 </navigation>
