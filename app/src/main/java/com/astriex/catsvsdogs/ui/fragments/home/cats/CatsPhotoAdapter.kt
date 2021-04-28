@@ -1,16 +1,24 @@
 package com.astriex.catsvsdogs.ui.fragments.home.cats
 
+import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.astriex.catsvsdogs.R
 import com.astriex.catsvsdogs.data.networking.cats.catsList.AllCatImagesResponseItem
+import com.astriex.catsvsdogs.util.DoubleClickListener
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 
-class CatsPhotoAdapter :
+interface CatVoteListener {
+    fun saveCatVote()
+}
+
+class CatsPhotoAdapter(private val listener: CatVoteListener) :
     PagingDataAdapter<AllCatImagesResponseItem, CatsPhotoAdapter.PhotoViewHolder>(PHOTO_COMPARATOR) {
 
     companion object {
@@ -26,12 +34,12 @@ class CatsPhotoAdapter :
                 oldItem: AllCatImagesResponseItem,
                 newItem: AllCatImagesResponseItem
             ): Boolean {
-                return oldItem.originalFilename == newItem.originalFilename
+                return oldItem == newItem
             }
         }
     }
 
-    class PhotoViewHolder(private val binding: com.astriex.catsvsdogs.databinding.ItemCatsListBinding) :
+    inner class PhotoViewHolder(private val binding: com.astriex.catsvsdogs.databinding.ItemCatsListBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(photo: AllCatImagesResponseItem) {
             Glide.with(itemView)
@@ -40,6 +48,13 @@ class CatsPhotoAdapter :
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .error(R.drawable.ic_error)
                 .into(binding.ivCatPhoto)
+
+            itemView.setOnClickListener(object : DoubleClickListener() {
+                override fun onDoubleClick(v: View) {
+                    listener.saveCatVote()
+                }
+
+            })
         }
     }
 

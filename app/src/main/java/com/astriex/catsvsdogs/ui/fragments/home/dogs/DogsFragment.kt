@@ -8,10 +8,14 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.astriex.catsvsdogs.R
 import com.astriex.catsvsdogs.databinding.FragmentDogsBinding
+import com.astriex.catsvsdogs.db.Vote
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class DogsFragment : Fragment(R.layout.fragment_dogs) {
+class DogsFragment : Fragment(R.layout.fragment_dogs), DogVoteListener {
     private val viewModel by viewModels<DogsViewModel>()
     private var _binding: FragmentDogsBinding? = null
     private val binding
@@ -30,11 +34,19 @@ class DogsFragment : Fragment(R.layout.fragment_dogs) {
 
         _binding = FragmentDogsBinding.bind(view)
 
-        val adapter = DogsPhotoAdapter()
+        val adapter = DogsPhotoAdapter(this)
         binding.recyclerView.adapter = adapter
 
         viewModel.getAllDogs().observe(viewLifecycleOwner) {
             adapter.submitData(viewLifecycleOwner.lifecycle, it)
+        }
+    }
+
+    override fun saveDogVote() {
+        var oldVote: Vote? = null
+        CoroutineScope(Dispatchers.IO).launch {
+            oldVote = viewModel.getDogVotes()
+            viewModel.saveVote(Vote(oldVote!!.count.plus(1), oldVote!!.catOrDog))
         }
     }
 }

@@ -47,8 +47,6 @@ class PhotoRepository @Inject constructor(
         emit(votes)
     }.flowOn(Dispatchers.IO)
 
-    //suspend fun getAllCatImages() = catsListApi.getAllCatImages()
-
     fun getAllCats() = Pager(
         config = PagingConfig(
             pageSize = 9,

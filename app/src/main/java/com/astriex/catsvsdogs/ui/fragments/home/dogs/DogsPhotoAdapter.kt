@@ -1,6 +1,7 @@
 package com.astriex.catsvsdogs.ui.fragments.home.dogs
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
@@ -8,10 +9,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.astriex.catsvsdogs.R
 import com.astriex.catsvsdogs.data.networking.dogs.dogsList.AllDogImagesResponseItem
 import com.astriex.catsvsdogs.databinding.ItemDogsListBinding
+import com.astriex.catsvsdogs.util.DoubleClickListener
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 
-class DogsPhotoAdapter :
+interface DogVoteListener {
+    fun saveDogVote()
+}
+
+class DogsPhotoAdapter(private val listener: DogVoteListener) :
     PagingDataAdapter<AllDogImagesResponseItem, DogsPhotoAdapter.PhotoViewHolder>(
         COMPARATOR_OBJECT
     ) {
@@ -35,7 +41,7 @@ class DogsPhotoAdapter :
         }
     }
 
-    class PhotoViewHolder(private val binding: ItemDogsListBinding) :
+    inner class PhotoViewHolder(private val binding: ItemDogsListBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(photo: AllDogImagesResponseItem) {
             Glide.with(itemView)
@@ -44,6 +50,13 @@ class DogsPhotoAdapter :
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .error(R.drawable.ic_error)
                 .into(binding.ivDogPhoto)
+
+            itemView.setOnClickListener(object : DoubleClickListener() {
+                override fun onDoubleClick(v: View) {
+                    listener.saveDogVote()
+                }
+
+            })
         }
     }
 
