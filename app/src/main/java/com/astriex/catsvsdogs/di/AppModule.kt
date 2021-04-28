@@ -4,8 +4,10 @@ import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.astriex.catsvsdogs.data.cats.CatsApi
-import com.astriex.catsvsdogs.data.dogs.DogsApi
+import com.astriex.catsvsdogs.data.networking.cats.catsList.CatsListApi
+import com.astriex.catsvsdogs.data.networking.cats.catsVersus.CatsApi
+import com.astriex.catsvsdogs.data.networking.dogs.dogsList.DogsListApi
+import com.astriex.catsvsdogs.data.networking.dogs.dogsVersus.DogsApi
 import com.astriex.catsvsdogs.data.repository.PhotoRepository
 import com.astriex.catsvsdogs.db.VoteDao
 import com.astriex.catsvsdogs.db.VotesDatabase
@@ -50,15 +52,43 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideRepository(catsApi: CatsApi, dogsApi: DogsApi, voteDao: VoteDao): PhotoRepository =
-        PhotoRepository(catsApi, dogsApi, voteDao)
+    @Named("catsList")
+    fun provideCatsListRetrofit(): Retrofit = Retrofit.Builder().baseUrl(CatsListApi.BASE_URL)
+        .addConverterFactory(GsonConverterFactory.create()).build()
+
+    @Provides
+    @Singleton
+    fun provideCatsListApi(@Named("catsList") retrofit: Retrofit): CatsListApi =
+        retrofit.create(CatsListApi::class.java)
+
+    @Provides
+    @Singleton
+    @Named("dogsList")
+    fun provideDogsListRetrofit(): Retrofit = Retrofit.Builder().baseUrl(DogsListApi.BASE_URL)
+        .addConverterFactory(GsonConverterFactory.create()).build()
+
+    @Provides
+    @Singleton
+    fun provideDogsListApi(@Named("dogsList") retrofit: Retrofit): DogsListApi =
+        retrofit.create(DogsListApi::class.java)
+
+    @Provides
+    @Singleton
+    fun provideRepository(
+        catsApi: CatsApi,
+        dogsApi: DogsApi,
+        catsListApi: CatsListApi,
+        dogsListApi: DogsListApi,
+        voteDao: VoteDao
+    ): PhotoRepository =
+        PhotoRepository(catsApi, dogsApi, catsListApi, dogsListApi, voteDao)
 
     @Provides
     @Singleton
     fun provideVotesDatabase(@ApplicationContext app: Context): VotesDatabase =
         Room.databaseBuilder(app, VotesDatabase::class.java, "votesDB").addCallback(rdc).build()
 
-    private val rdc = object: RoomDatabase.Callback() {
+    private val rdc = object : RoomDatabase.Callback() {
         override fun onCreate(db: SupportSQLiteDatabase) {
             super.onCreate(db)
             CoroutineScope(Dispatchers.IO).launch {

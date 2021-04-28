@@ -17,7 +17,11 @@
         android:id="@+id/dogsFragment"
         android:name="com.astriex.catsvsdogs.ui.fragments.home.dogs.DogsFragment"
         android:label="fragment_dogs"
-        tools:layout="@layout/fragment_dogs" />
+        tools:layout="@layout/fragment_dogs" >
+        <action
+            android:id="@+id/action_dogsFragment_to_resultsFragment"
+            app:destination="@id/resultsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/versusFragment"
         android:name="com.astriex.catsvsdogs.ui.fragments.home.versus.VersusFragment"
@@ -27,4 +31,9 @@
             android:id="@+id/action_versusFragment_to_catsFragment"
             app:destination="@id/catsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/resultsFragment"
+        android:name="com.astriex.catsvsdogs.ui.fragments.home.results.ResultsFragment"
+        android:label="fragment_results"
+        tools:layout="@layout/fragment_results" />
 </navigation>

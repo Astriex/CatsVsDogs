@@ -1,7 +1,6 @@
 package com.astriex.catsvsdogs.ui.fragments.home.versus
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,8 +8,8 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.astriex.catsvsdogs.R
-import com.astriex.catsvsdogs.data.cats.CatResponse
-import com.astriex.catsvsdogs.data.dogs.DogResponse
+import com.astriex.catsvsdogs.data.networking.cats.catsVersus.CatResponse
+import com.astriex.catsvsdogs.data.networking.dogs.dogsVersus.DogResponse
 import com.astriex.catsvsdogs.databinding.FragmentVersusBinding
 import com.astriex.catsvsdogs.db.Vote
 import com.bumptech.glide.Glide
@@ -100,5 +99,10 @@ class VersusFragment : Fragment(R.layout.fragment_versus) {
         } else {
             Toast.makeText(context, "error", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

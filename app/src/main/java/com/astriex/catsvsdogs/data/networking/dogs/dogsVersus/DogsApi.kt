@@ -1,4 +1,4 @@
-package com.astriex.catsvsdogs.data.dogs
+package com.astriex.catsvsdogs.data.networking.dogs.dogsVersus
 
 import com.astriex.catsvsdogs.BuildConfig
 import retrofit2.Response

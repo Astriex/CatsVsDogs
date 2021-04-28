@@ -1,7 +1,5 @@
-package com.astriex.catsvsdogs.data.cats
+package com.astriex.catsvsdogs.data.networking.cats.catsVersus
 
-
-import com.google.gson.annotations.SerializedName
 
 data class CatPhotoItem(
     val breeds: List<Any>,
