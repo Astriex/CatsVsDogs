@@ -11,7 +11,7 @@ import javax.inject.Inject
 @HiltViewModel
 class DogsViewModel @Inject constructor(private val repository: PhotoRepository): ViewModel() {
 
-    fun getAllDogs() = repository.getAllDogs()
+    fun getAllDogs(query: String) = repository.getSearchResults(query)
 
     fun getDogVotes() = repository.getDogVotes()
 

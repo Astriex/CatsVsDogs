@@ -34,10 +34,10 @@ class DogsFragment : Fragment(R.layout.fragment_dogs), DogVoteListener {
 
         _binding = FragmentDogsBinding.bind(view)
 
-        val adapter = DogsPhotoAdapter(this)
+        val adapter = DogsPhotoAdapter(this, requireContext())
         binding.recyclerView.adapter = adapter
 
-        viewModel.getAllDogs().observe(viewLifecycleOwner) {
+        viewModel.getAllDogs("dog").observe(viewLifecycleOwner) {
             adapter.submitData(viewLifecycleOwner.lifecycle, it)
         }
     }

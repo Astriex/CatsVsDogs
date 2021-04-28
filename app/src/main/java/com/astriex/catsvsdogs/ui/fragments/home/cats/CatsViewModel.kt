@@ -9,10 +9,9 @@ import javax.inject.Inject
 @HiltViewModel
 class CatsViewModel @Inject constructor(private val repository: PhotoRepository): ViewModel() {
 
-    fun getAllCatImages() = repository.getAllCats()
-
     fun getCatVotes() = repository.getCatVotes()
 
     suspend fun saveVote(vote: Vote) = repository.saveVote(vote)
 
+    fun getCatPhotos(query: String) = repository.getSearchResults(query)
 }

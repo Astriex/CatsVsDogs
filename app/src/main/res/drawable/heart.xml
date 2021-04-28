@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="64dp"
+    android:height="64dp"
+    android:viewportWidth="64"
+    android:viewportHeight="64">
+
+    <group
+        android:name="filled"
+        android:pivotX="32"
+        android:pivotY="32"
+        android:scaleX="0"
+        android:scaleY="0">
+        <path
+            android:name="filled_heart"
+            android:fillColor="#FFF"
+            android:fillAlpha="0"
+            android:pathData="M12,32 A8,8 0 0 1 32, 18 A8,8 0 0 1 52, 32 L 32, 56z" />
+    </group>
+
+    <group android:name="outline"
+        android:pivotX="32"
+        android:pivotY="32">
+        <path
+            android:name="outline_heart"
+            android:pathData="M12,32 A8,8 0 0 1 32, 18 A8,8 0 0 1 52, 32 L 32, 56z"
+            android:strokeWidth="3"
+            android:strokeColor="#FF9800"
+            android:strokeLineJoin="round" />
+    </group>
+</vector>

@@ -3,10 +3,9 @@ package com.astriex.catsvsdogs.data.repository
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.liveData
-import com.astriex.catsvsdogs.data.networking.cats.catsList.CatsListApi
+import com.astriex.catsvsdogs.data.networking.unsplashList.UnsplashApi
 import com.astriex.catsvsdogs.data.networking.cats.catsList.CatsListPagingSource
 import com.astriex.catsvsdogs.data.networking.cats.catsVersus.CatsApi
-import com.astriex.catsvsdogs.data.networking.dogs.dogsList.DogsListApi
 import com.astriex.catsvsdogs.data.networking.dogs.dogsList.DogsPagingSource
 import com.astriex.catsvsdogs.data.networking.dogs.dogsVersus.DogsApi
 import com.astriex.catsvsdogs.db.Vote
@@ -20,8 +19,7 @@ import javax.inject.Inject
 class PhotoRepository @Inject constructor(
     private val catsApi: CatsApi,
     private val dogsApi: DogsApi,
-    private val catsListApi: CatsListApi,
-    private val dogsListApi: DogsListApi,
+    private val unsplashApi: UnsplashApi,
     private val voteDao: VoteDao
 ) {
 
@@ -47,24 +45,13 @@ class PhotoRepository @Inject constructor(
         emit(votes)
     }.flowOn(Dispatchers.IO)
 
-    fun getAllCats() = Pager(
+    fun getSearchResults(query: String) = Pager(
         config = PagingConfig(
-            pageSize = 9,
+            pageSize = 20,
             maxSize = 100,
             enablePlaceholders = false
         ),
-        pagingSourceFactory = { CatsListPagingSource(catsListApi) }
-    ).liveData
-
-    suspend fun getAllDogImages() = dogsListApi.getAllDogImages()
-
-    fun getAllDogs() = Pager(
-        config = PagingConfig(
-            pageSize = 9,
-            maxSize = 100,
-            enablePlaceholders = false
-        ),
-        pagingSourceFactory = { DogsPagingSource(dogsListApi) }
+        pagingSourceFactory = { CatsListPagingSource(unsplashApi, query) }
     ).liveData
 
 }

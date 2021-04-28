@@ -1,4 +1,4 @@
-package com.astriex.catsvsdogs.data.networking.dogs.dogsList
+package com.astriex.catsvsdogs.data.networking.cats.catsList
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
@@ -8,27 +8,30 @@ import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
 
-private const val DOGS_LIST_STARTING_PAGE_INDEX = 0
+private const val CATS_LIST_STARTING_PAGE_INDEX = 1
 
-class DogsPagingSource @Inject constructor(
-    private val dogsListApi: UnsplashApi,
+class CatsListPagingSource @Inject constructor(
+    private val unsplashApi: UnsplashApi,
     private val query: String
 ) :
     PagingSource<Int, UnsplashPhoto>() {
     override fun getRefreshKey(state: PagingState<Int, UnsplashPhoto>): Int? {
-        return state.anchorPosition
+        return state.anchorPosition?.let { anchorPosition ->
+            state.closestPageToPosition(anchorPosition)?.prevKey?.plus(1)
+                ?: state.closestPageToPosition(anchorPosition)?.nextKey?.minus(1)
+        }
     }
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, UnsplashPhoto> {
-        val position = params.key ?: DOGS_LIST_STARTING_PAGE_INDEX
+        val position = params.key ?: CATS_LIST_STARTING_PAGE_INDEX
         return try {
             val response =
-                dogsListApi.searchPhotos(query = query, page = position, perPage = params.loadSize)
+                unsplashApi.searchPhotos(page = position, perPage = params.loadSize, query = query)
             val photos = response.results
 
             LoadResult.Page(
                 data = photos,
-                prevKey = if (position == 1) null else position - 1,
+                prevKey = if (position == CATS_LIST_STARTING_PAGE_INDEX) null else position - 1,
                 nextKey = if (photos.isEmpty()) null else position + 1
             )
         } catch (e: IOException) {
@@ -36,7 +39,7 @@ class DogsPagingSource @Inject constructor(
         } catch (e: HttpException) {
             LoadResult.Error(e)
         }
-    }
 
+    }
 
 }

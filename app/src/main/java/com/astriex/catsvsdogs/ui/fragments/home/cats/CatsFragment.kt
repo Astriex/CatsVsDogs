@@ -33,10 +33,10 @@ class CatsFragment : Fragment(R.layout.fragment_cats), CatVoteListener {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentCatsBinding.bind(view)
 
-        val adapter = CatsPhotoAdapter(this)
+        val adapter = CatsPhotoAdapter(this, requireContext())
         binding.recyclerView.adapter = adapter
 
-        viewModel.getAllCatImages().observe(viewLifecycleOwner) {
+        viewModel.getCatPhotos("cat").observe(viewLifecycleOwner) {
             adapter.submitData(viewLifecycleOwner.lifecycle, it)
         }
     }

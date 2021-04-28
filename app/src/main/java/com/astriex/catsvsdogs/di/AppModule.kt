@@ -4,9 +4,8 @@ import android.content.Context
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.astriex.catsvsdogs.data.networking.cats.catsList.CatsListApi
+import com.astriex.catsvsdogs.data.networking.unsplashList.UnsplashApi
 import com.astriex.catsvsdogs.data.networking.cats.catsVersus.CatsApi
-import com.astriex.catsvsdogs.data.networking.dogs.dogsList.DogsListApi
 import com.astriex.catsvsdogs.data.networking.dogs.dogsVersus.DogsApi
 import com.astriex.catsvsdogs.data.repository.PhotoRepository
 import com.astriex.catsvsdogs.db.VoteDao
@@ -53,35 +52,23 @@ class AppModule {
     @Provides
     @Singleton
     @Named("catsList")
-    fun provideCatsListRetrofit(): Retrofit = Retrofit.Builder().baseUrl(CatsListApi.BASE_URL)
+    fun provideCatsListRetrofit(): Retrofit = Retrofit.Builder().baseUrl(UnsplashApi.BASE_URL)
         .addConverterFactory(GsonConverterFactory.create()).build()
 
     @Provides
     @Singleton
-    fun provideCatsListApi(@Named("catsList") retrofit: Retrofit): CatsListApi =
-        retrofit.create(CatsListApi::class.java)
-
-    @Provides
-    @Singleton
-    @Named("dogsList")
-    fun provideDogsListRetrofit(): Retrofit = Retrofit.Builder().baseUrl(DogsListApi.BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create()).build()
-
-    @Provides
-    @Singleton
-    fun provideDogsListApi(@Named("dogsList") retrofit: Retrofit): DogsListApi =
-        retrofit.create(DogsListApi::class.java)
+    fun provideCatsListApi(@Named("catsList") retrofit: Retrofit): UnsplashApi =
+        retrofit.create(UnsplashApi::class.java)
 
     @Provides
     @Singleton
     fun provideRepository(
         catsApi: CatsApi,
         dogsApi: DogsApi,
-        catsListApi: CatsListApi,
-        dogsListApi: DogsListApi,
+        unsplashApi: UnsplashApi,
         voteDao: VoteDao
     ): PhotoRepository =
-        PhotoRepository(catsApi, dogsApi, catsListApi, dogsListApi, voteDao)
+        PhotoRepository(catsApi, dogsApi, unsplashApi, voteDao)
 
     @Provides
     @Singleton
