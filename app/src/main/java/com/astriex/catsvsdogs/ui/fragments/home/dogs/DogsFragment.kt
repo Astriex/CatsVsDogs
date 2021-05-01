@@ -49,4 +49,9 @@ class DogsFragment : Fragment(R.layout.fragment_dogs), DogVoteListener {
             viewModel.saveVote(Vote(oldVote!!.count.plus(1), oldVote!!.catOrDog))
         }
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

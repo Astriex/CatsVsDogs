@@ -7,7 +7,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class CatsViewModel @Inject constructor(private val repository: PhotoRepository): ViewModel() {
+class CatsViewModel @Inject constructor(private val repository: PhotoRepository) : ViewModel() {
 
     fun getCatVotes() = repository.getCatVotes()
 

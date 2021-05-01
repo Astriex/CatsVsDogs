@@ -3,11 +3,10 @@ package com.astriex.catsvsdogs.data.repository
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.liveData
-import com.astriex.catsvsdogs.data.networking.unsplashList.UnsplashApi
 import com.astriex.catsvsdogs.data.networking.cats.catsList.CatsListPagingSource
 import com.astriex.catsvsdogs.data.networking.cats.catsVersus.CatsApi
-import com.astriex.catsvsdogs.data.networking.dogs.dogsList.DogsPagingSource
 import com.astriex.catsvsdogs.data.networking.dogs.dogsVersus.DogsApi
+import com.astriex.catsvsdogs.data.networking.unsplashList.UnsplashApi
 import com.astriex.catsvsdogs.db.Vote
 import com.astriex.catsvsdogs.db.VoteDao
 import kotlinx.coroutines.Dispatchers

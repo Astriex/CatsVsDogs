@@ -28,6 +28,7 @@
         android:text="Who won?"
         android:textSize="40sp"
         android:textStyle="bold|italic"
+        android:textColor="@color/orange"
         app:layout_constraintBottom_toTopOf="@+id/pieView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

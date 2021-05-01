@@ -8,6 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="pieChartColor1">#FFC5FF8C</color>
-    <color name="pieChartCOlor2">#FFFFD28C</color>
+    <color name="pieChartCats">#cc335c</color>
+    <color name="pieChartDogs">#5733cc</color>
+    <color name="orange">#FF9800</color>
+
+    <color name="colorAccent">#c10d39</color>
 </resources>

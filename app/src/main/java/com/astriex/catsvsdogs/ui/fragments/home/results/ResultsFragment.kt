@@ -4,11 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.content.ContextCompat.getColor
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.MutableLiveData
 import com.astriex.catsvsdogs.R
 import com.astriex.catsvsdogs.databinding.FragmentResultsBinding
 import com.astriex.catsvsdogs.db.Vote
@@ -66,14 +64,14 @@ class ResultsFragment : Fragment(R.layout.fragment_results) {
             .addData(
                 SimplePieInfo(
                     catVotes.count.toDouble(),
-                    getColor(requireContext(), R.color.pieChartColor1),
+                    getColor(requireContext(), R.color.pieChartCats),
                     "cats"
                 )
             )//Data (bean that implements the IPieInfo interface)
             .addData(
                 SimplePieInfo(
                     dogVotes.count.toDouble(),
-                    getColor(requireContext(), R.color.pieChartCOlor2),
+                    getColor(requireContext(), R.color.pieChartDogs),
                     "dogs"
                 )
             )

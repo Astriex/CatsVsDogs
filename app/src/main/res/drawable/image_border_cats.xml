@@ -4,8 +4,7 @@
 
     <stroke
         android:width="3dp"
-        android:color="#FF9800"
-        />
+        android:color="@color/pieChartCats" />
 
     <padding
         android:bottom="3dp"

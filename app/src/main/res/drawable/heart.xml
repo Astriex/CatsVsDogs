@@ -25,7 +25,7 @@
             android:name="outline_heart"
             android:pathData="M12,32 A8,8 0 0 1 32, 18 A8,8 0 0 1 52, 32 L 32, 56z"
             android:strokeWidth="3"
-            android:strokeColor="#FF9800"
+            android:strokeColor="@color/orange"
             android:strokeLineJoin="round" />
     </group>
 </vector>
