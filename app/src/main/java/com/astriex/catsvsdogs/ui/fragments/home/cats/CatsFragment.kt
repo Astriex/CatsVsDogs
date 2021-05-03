@@ -4,11 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.paging.LoadState
 import com.astriex.catsvsdogs.R
+import com.astriex.catsvsdogs.data.networking.unsplashList.UnsplashPhotoLoadStateAdapter
 import com.astriex.catsvsdogs.databinding.FragmentCatsBinding
 import com.astriex.catsvsdogs.db.Vote
 import dagger.hilt.android.AndroidEntryPoint
@@ -36,7 +37,22 @@ class CatsFragment : Fragment(R.layout.fragment_cats), CatVoteListener {
         _binding = FragmentCatsBinding.bind(view)
 
         val adapter = CatsPhotoAdapter(this, requireContext())
-        binding.recyclerView.adapter = adapter
+        binding.recyclerView.adapter = adapter.withLoadStateHeaderAndFooter(
+            header = UnsplashPhotoLoadStateAdapter { adapter.retry() },
+            footer = UnsplashPhotoLoadStateAdapter { adapter.retry() }
+        )
+        adapter.addLoadStateListener { loadState ->
+            binding.apply {
+                progressBar.isVisible = loadState.source.refresh is LoadState.Loading
+                recyclerView.isVisible = loadState.source.refresh is LoadState.NotLoading
+                btnRetry.isVisible = loadState.source.refresh is LoadState.Error
+                tvError.isVisible = loadState.source.refresh is LoadState.Error
+
+                btnRetry.setOnClickListener {
+                    adapter.retry()
+                }
+            }
+        }
 
         viewModel.getCatPhotos("cat").observe(viewLifecycleOwner) {
             adapter.submitData(viewLifecycleOwner.lifecycle, it)

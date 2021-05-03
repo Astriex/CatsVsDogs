@@ -65,6 +65,7 @@ class DogsPhotoAdapter(private val listener: DogVoteListener, private val contex
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .error(R.drawable.ic_error)
                 .into(binding.ivDogPhoto)
+            binding.tvUsername.text = photo.user.username
         }
 
         private fun animateLike() {

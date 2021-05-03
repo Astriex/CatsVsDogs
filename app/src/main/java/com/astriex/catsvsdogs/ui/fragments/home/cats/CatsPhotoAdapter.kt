@@ -77,6 +77,7 @@ class CatsPhotoAdapter(private val listener: CatVoteListener, private val contex
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .error(R.drawable.ic_error)
                 .into(binding.ivCatPhoto)
+            binding.tvUsername.text = photo.user.username
         }
     }
 

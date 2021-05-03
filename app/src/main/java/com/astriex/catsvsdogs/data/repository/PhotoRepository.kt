@@ -46,8 +46,8 @@ class PhotoRepository @Inject constructor(
 
     fun getSearchResults(query: String) = Pager(
         config = PagingConfig(
-            pageSize = 20,
-            maxSize = 100,
+            pageSize = 5,
+            maxSize = 20,
             enablePlaceholders = false
         ),
         pagingSourceFactory = { CatsListPagingSource(unsplashApi, query) }

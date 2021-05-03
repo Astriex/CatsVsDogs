@@ -4,9 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.paging.LoadState
 import com.astriex.catsvsdogs.R
+import com.astriex.catsvsdogs.data.networking.unsplashList.UnsplashPhotoLoadStateAdapter
 import com.astriex.catsvsdogs.databinding.FragmentDogsBinding
 import com.astriex.catsvsdogs.db.Vote
 import dagger.hilt.android.AndroidEntryPoint
@@ -35,7 +38,22 @@ class DogsFragment : Fragment(R.layout.fragment_dogs), DogVoteListener {
         _binding = FragmentDogsBinding.bind(view)
 
         val adapter = DogsPhotoAdapter(this, requireContext())
-        binding.recyclerView.adapter = adapter
+        binding.recyclerView.adapter = adapter.withLoadStateHeaderAndFooter(
+            header = UnsplashPhotoLoadStateAdapter { adapter.retry() },
+            footer = UnsplashPhotoLoadStateAdapter { adapter.retry() }
+        )
+        adapter.addLoadStateListener { loadState ->
+            binding.apply {
+                progressBar.isVisible = loadState.source.refresh is LoadState.Loading
+                recyclerView.isVisible = loadState.source.refresh is LoadState.NotLoading
+                btnRetry.isVisible = loadState.source.refresh is LoadState.Error
+                tvError.isVisible = loadState.source.refresh is LoadState.Error
+
+                btnRetry.setOnClickListener {
+                    adapter.retry()
+                }
+            }
+        }
 
         viewModel.getAllDogs("dog").observe(viewLifecycleOwner) {
             adapter.submitData(viewLifecycleOwner.lifecycle, it)
