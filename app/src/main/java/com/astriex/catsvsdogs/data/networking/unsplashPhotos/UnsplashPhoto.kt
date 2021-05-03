@@ -1,4 +1,4 @@
-package com.astriex.catsvsdogs.data.networking.unsplashList
+package com.astriex.catsvsdogs.data.networking.unsplashPhotos
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

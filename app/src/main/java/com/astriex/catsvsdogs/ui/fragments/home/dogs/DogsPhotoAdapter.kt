@@ -9,7 +9,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.astriex.catsvsdogs.R
-import com.astriex.catsvsdogs.data.networking.unsplashList.UnsplashPhoto
+import com.astriex.catsvsdogs.data.networking.unsplashPhotos.UnsplashPhoto
 import com.astriex.catsvsdogs.databinding.ItemDogsListBinding
 import com.astriex.catsvsdogs.util.DoubleClickListener
 import com.bumptech.glide.Glide
@@ -20,6 +20,7 @@ import kotlinx.coroutines.launch
 
 interface DogVoteListener {
     fun saveDogVote()
+    fun openDetails(photo: UnsplashPhoto)
 }
 
 class DogsPhotoAdapter(private val listener: DogVoteListener, private val context: Context) :
@@ -50,10 +51,21 @@ class DogsPhotoAdapter(private val listener: DogVoteListener, private val contex
         RecyclerView.ViewHolder(binding.root) {
 
         init {
-            itemView.setOnClickListener(object : DoubleClickListener() {
-                override fun onDoubleClick(v: View) {
+            binding.root.setOnClickListener(object: DoubleClickListener() {
+
+                override fun onDoubleClick() {
                     listener.saveDogVote()
                     animateLike()
+                }
+
+                override fun onSingleClick() {
+                    val position = bindingAdapterPosition
+                    if(position != RecyclerView.NO_POSITION) {
+                        val item = getItem(position)
+                        if(item != null) {
+                            listener.openDetails(item)
+                        }
+                    }
                 }
             })
         }

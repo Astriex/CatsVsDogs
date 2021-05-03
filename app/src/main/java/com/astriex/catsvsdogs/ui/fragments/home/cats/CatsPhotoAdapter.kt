@@ -1,6 +1,5 @@
 package com.astriex.catsvsdogs.ui.fragments.home.cats
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +9,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.astriex.catsvsdogs.R
-import com.astriex.catsvsdogs.data.networking.unsplashList.UnsplashPhoto
+import com.astriex.catsvsdogs.data.networking.unsplashPhotos.UnsplashPhoto
 import com.astriex.catsvsdogs.util.DoubleClickListener
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
@@ -21,6 +20,7 @@ import kotlinx.coroutines.launch
 
 interface CatVoteListener {
     fun saveCatVote()
+    fun openDetails(photo: UnsplashPhoto)
 }
 
 class CatsPhotoAdapter(private val listener: CatVoteListener, private val context: Context) :
@@ -49,10 +49,19 @@ class CatsPhotoAdapter(private val listener: CatVoteListener, private val contex
 
         init {
             binding.root.setOnClickListener(object : DoubleClickListener() {
-                @SuppressLint("RestrictedApi")
-                override fun onDoubleClick(v: View) {
+                override fun onDoubleClick() {
                     listener.saveCatVote()
                     animateLike()
+                }
+
+                override fun onSingleClick() {
+                    val position = bindingAdapterPosition
+                    if(position != RecyclerView.NO_POSITION) {
+                        val item = getItem(position)
+                        if(item != null) {
+                            listener.openDetails(item)
+                        }
+                    }
                 }
             })
         }

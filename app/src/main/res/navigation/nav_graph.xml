@@ -10,8 +10,11 @@
         android:label="fragment_cats"
         tools:layout="@layout/fragment_cats" >
         <action
-            android:id="@+id/action_catsFragment3_to_dogsFragment3"
+            android:id="@+id/action_catsFragment_to_dogsFragment"
             app:destination="@id/dogsFragment" />
+        <action
+            android:id="@+id/action_catsFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/dogsFragment"
@@ -21,6 +24,9 @@
         <action
             android:id="@+id/action_dogsFragment_to_resultsFragment"
             app:destination="@id/resultsFragment" />
+        <action
+            android:id="@+id/action_dogsFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/versusFragment"
@@ -36,4 +42,13 @@
         android:name="com.astriex.catsvsdogs.ui.fragments.home.results.ResultsFragment"
         android:label="fragment_results"
         tools:layout="@layout/fragment_results" />
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.astriex.catsvsdogs.ui.fragments.home.details.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" >
+        <argument
+            android:name="photo"
+            app:argType="com.astriex.catsvsdogs.data.networking.unsplashPhotos.UnsplashPhoto" />
+    </fragment>
 </navigation>

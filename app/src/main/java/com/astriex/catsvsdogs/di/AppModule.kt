@@ -6,7 +6,7 @@ import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.astriex.catsvsdogs.data.networking.cats.catsVersus.CatsApi
 import com.astriex.catsvsdogs.data.networking.dogs.dogsVersus.DogsApi
-import com.astriex.catsvsdogs.data.networking.unsplashList.UnsplashApi
+import com.astriex.catsvsdogs.data.networking.unsplashPhotos.UnsplashApi
 import com.astriex.catsvsdogs.data.repository.PhotoRepository
 import com.astriex.catsvsdogs.db.VoteDao
 import com.astriex.catsvsdogs.db.VotesDatabase

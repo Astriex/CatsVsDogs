@@ -1,4 +1,4 @@
-package com.astriex.catsvsdogs.data.networking.unsplashList
+package com.astriex.catsvsdogs.data.networking.unsplashPhotos
 
 import com.astriex.catsvsdogs.BuildConfig
 import retrofit2.http.GET

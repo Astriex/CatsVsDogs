@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import com.astriex.catsvsdogs.R
-import com.astriex.catsvsdogs.data.networking.unsplashList.UnsplashPhotoLoadStateAdapter
+import com.astriex.catsvsdogs.data.networking.unsplashPhotos.UnsplashPhoto
+import com.astriex.catsvsdogs.data.networking.unsplashPhotos.UnsplashPhotoLoadStateAdapter
 import com.astriex.catsvsdogs.databinding.FragmentDogsBinding
 import com.astriex.catsvsdogs.db.Vote
 import dagger.hilt.android.AndroidEntryPoint
@@ -66,6 +68,11 @@ class DogsFragment : Fragment(R.layout.fragment_dogs), DogVoteListener {
             oldVote = viewModel.getDogVotes()
             viewModel.saveVote(Vote(oldVote!!.count.plus(1), oldVote!!.catOrDog))
         }
+    }
+
+    override fun openDetails(photo: UnsplashPhoto) {
+        val action = DogsFragmentDirections.actionDogsFragmentToDetailsFragment(photo)
+        findNavController().navigate(action)
     }
 
     override fun onDestroyView() {
