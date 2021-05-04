@@ -6,26 +6,29 @@
     android:layout_height="match_parent"
     tools:context=".ui.fragments.home.versus.VersusFragment">
 
-
     <ImageView
         android:id="@+id/ivCat"
-        android:layout_width="275dp"
-        android:layout_height="180dp"
+        android:layout_width="316dp"
+        android:layout_height="248dp"
         android:layout_marginTop="28dp"
+        android:layout_marginBottom="69dp"
         android:adjustViewBounds="true"
         android:background="@drawable/image_border_cats"
         android:contentDescription="cat image"
         android:cropToPadding="true"
         android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/ivDog"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/ivDog"
-        android:layout_width="277dp"
-        android:layout_height="176dp"
-        android:layout_marginBottom="76dp"
+        android:layout_width="316dp"
+        android:layout_height="254dp"
+        android:layout_marginBottom="156dp"
         android:adjustViewBounds="true"
         android:background="@drawable/image_border_dogs"
         android:contentDescription="dog image"
@@ -33,41 +36,59 @@
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.536"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <ImageView
-        android:id="@+id/ivCatVote"
-        android:layout_width="80dp"
-        android:layout_height="82dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="40dp"
-        android:contentDescription="Cat vote image"
-        android:src="@drawable/ic_cat_vote"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivCat" />
-
-    <ImageView
-        android:id="@+id/ivDogVote"
-        android:layout_width="78dp"
-        android:layout_height="79dp"
-        android:layout_marginEnd="80dp"
-        android:layout_marginBottom="40dp"
-        android:contentDescription="dog vote image"
-        android:src="@drawable/ic_dog_vote"
-        app:layout_constraintBottom_toTopOf="@+id/ivDog"
-        app:layout_constraintEnd_toEndOf="parent" />
-
     <TextView
-        android:id="@+id/tvVs"
+        android:id="@+id/tvError"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="VS"
-        android:textSize="36sp"
-        android:textColor="@color/orange"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toTopOf="@+id/ivDogVote"
+        android:layout_marginTop="276dp"
+        android:text="Results could not be loaded"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivCatVote" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+    <Button
+        android:id="@+id/btnRetry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Retry"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvError"
+        app:layout_constraintVertical_bias="0.01"
+        tools:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/ivCatLike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/heart"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/ivCat"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ivCat"
+        tools:visibility="visible" />
+
+    <ImageView
+        android:id="@+id/ivDogLike"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/heart"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/ivDog"
+        app:layout_constraintEnd_toEndOf="@+id/ivDog"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="@+id/ivDog"
+        app:layout_constraintTop_toTopOf="@+id/ivDog"
+        tools:visibility="visible" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

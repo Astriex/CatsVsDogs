@@ -7,8 +7,8 @@
     <fragment
         android:id="@+id/catsFragment"
         android:name="com.astriex.catsvsdogs.ui.fragments.home.cats.CatsFragment"
-        android:label="fragment_cats"
-        tools:layout="@layout/fragment_cats" >
+        android:label="Cats"
+        tools:layout="@layout/fragment_cats">
         <action
             android:id="@+id/action_catsFragment_to_dogsFragment"
             app:destination="@id/dogsFragment" />
@@ -19,8 +19,8 @@
     <fragment
         android:id="@+id/dogsFragment"
         android:name="com.astriex.catsvsdogs.ui.fragments.home.dogs.DogsFragment"
-        android:label="fragment_dogs"
-        tools:layout="@layout/fragment_dogs" >
+        android:label="Dogs"
+        tools:layout="@layout/fragment_dogs">
         <action
             android:id="@+id/action_dogsFragment_to_resultsFragment"
             app:destination="@id/resultsFragment" />
@@ -31,8 +31,8 @@
     <fragment
         android:id="@+id/versusFragment"
         android:name="com.astriex.catsvsdogs.ui.fragments.home.versus.VersusFragment"
-        android:label="fragment_versus"
-        tools:layout="@layout/fragment_versus" >
+        android:label="Cats vs Dogs"
+        tools:layout="@layout/fragment_versus">
         <action
             android:id="@+id/action_versusFragment_to_catsFragment"
             app:destination="@id/catsFragment" />
@@ -40,13 +40,13 @@
     <fragment
         android:id="@+id/resultsFragment"
         android:name="com.astriex.catsvsdogs.ui.fragments.home.results.ResultsFragment"
-        android:label="fragment_results"
+        android:label="Results"
         tools:layout="@layout/fragment_results" />
     <fragment
         android:id="@+id/detailsFragment"
         android:name="com.astriex.catsvsdogs.ui.fragments.home.details.DetailsFragment"
-        android:label="fragment_details"
-        tools:layout="@layout/fragment_details" >
+        android:label="Details"
+        tools:layout="@layout/fragment_details">
         <argument
             android:name="photo"
             app:argType="com.astriex.catsvsdogs.data.networking.unsplashPhotos.UnsplashPhoto" />

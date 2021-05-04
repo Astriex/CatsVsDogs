@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
@@ -13,6 +14,10 @@ import com.astriex.catsvsdogs.data.networking.cats.catsVersus.CatResponse
 import com.astriex.catsvsdogs.data.networking.dogs.dogsVersus.DogResponse
 import com.astriex.catsvsdogs.databinding.FragmentVersusBinding
 import com.astriex.catsvsdogs.db.Vote
+import com.astriex.catsvsdogs.util.DoubleClickListener
+import com.astriex.catsvsdogs.util.hide
+import com.astriex.catsvsdogs.util.isConnected
+import com.astriex.catsvsdogs.util.show
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import dagger.hilt.android.AndroidEntryPoint
@@ -44,14 +49,22 @@ class VersusFragment : Fragment(R.layout.fragment_versus) {
 
         setupGlideCircularProgressDrawable()
 
-        binding.ivCatVote.setOnClickListener {
-            loadImages()
+        setupListeners()
+
+        binding.ivCat.setOnClickListener {
             saveCatVote()
+            loadImages()
         }
 
-        binding.ivDogVote.setOnClickListener {
-            loadImages()
+        binding.ivDog.setOnClickListener {
             saveDogVote()
+            loadImages()
+        }
+    }
+
+    private fun setupListeners() {
+        binding.btnRetry.setOnClickListener {
+            loadImages()
         }
     }
 
@@ -97,13 +110,35 @@ class VersusFragment : Fragment(R.layout.fragment_versus) {
     }
 
     private fun loadImages() {
+        if(isConnected()) {
+            showOnlineView()
+            loadOnlineImages()
+        } else {
+            showOfflineView()
+        }
+    }
+
+    private fun showOfflineView() {
+        binding.ivDog.hide()
+        binding.ivCat.hide()
+        binding.tvError.show()
+        binding.btnRetry.show()
+    }
+
+    private fun loadOnlineImages() {
         CoroutineScope(Dispatchers.Main).launch {
             val resultCat = viewModel.getCatPhoto()
             val resultDog = viewModel.getDogPhoto()
             handleCatResponse(resultCat)
             handleDogResponse(resultDog)
         }
+    }
 
+    private fun showOnlineView() {
+        binding.ivDog.show()
+        binding.ivCat.show()
+        binding.tvError.hide()
+        binding.btnRetry.hide()
     }
 
     private fun handleCatResponse(result: Response<CatResponse>) {
@@ -114,6 +149,7 @@ class VersusFragment : Fragment(R.layout.fragment_versus) {
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .placeholder(circularProgressDrawableCats)
                 .error(R.drawable.ic_error)
+                .timeout(5000)
                 .into(binding.ivCat)
         } else {
             Toast.makeText(context, "error", Toast.LENGTH_SHORT).show()
@@ -128,6 +164,7 @@ class VersusFragment : Fragment(R.layout.fragment_versus) {
                 .transition(DrawableTransitionOptions.withCrossFade())
                 .placeholder(circularProgressDrawableDogs)
                 .error(R.drawable.ic_error)
+                .timeout(5000)
                 .into(binding.ivDog)
         } else {
             Toast.makeText(context, "error", Toast.LENGTH_SHORT).show()
