@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.astriex.catsvsdogs.R
 import com.astriex.catsvsdogs.databinding.ActivityMainBinding
@@ -27,7 +27,8 @@ class MainActivity : AppCompatActivity() {
         navController = navHostFragment.findNavController()
         binding.bottomNavigation.setupWithNavController(navController)
 
-        NavigationUI.setupActionBarWithNavController(this, navController)
+        setSupportActionBar(binding.toolbar)
+        setupActionBarWithNavController(navController)
     }
 
     override fun onSupportNavigateUp(): Boolean {
