@@ -1,37 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
+    android:background="@drawable/background_gradient"
+    android:orientation="vertical"
     tools:context=".ui.fragments.home.results.ResultsFragment">
-
-    <com.razerdp.widget.animatedpieview.AnimatedPieView
-        android:id="@+id/pieView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="100dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/tvWhoWon"
         android:layout_width="294dp"
         android:layout_height="86dp"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="100dp"
         android:layout_marginBottom="50dp"
         android:gravity="center"
         android:text="Who won?"
+        android:textColor="@color/white"
         android:textSize="40sp"
-        android:textStyle="bold|italic"
-        android:textColor="@color/orange"
-        app:layout_constraintBottom_toTopOf="@+id/pieView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textStyle="bold|italic" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:layout_gravity="center_horizontal"
+        android:elevation="5dp"
+        app:cardCornerRadius="30dp">
+
+        <com.razerdp.widget.animatedpieview.AnimatedPieView
+            android:id="@+id/pieView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp" />
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

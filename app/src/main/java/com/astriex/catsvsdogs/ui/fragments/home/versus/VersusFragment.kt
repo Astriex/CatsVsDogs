@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
@@ -14,7 +13,6 @@ import com.astriex.catsvsdogs.data.networking.cats.catsVersus.CatResponse
 import com.astriex.catsvsdogs.data.networking.dogs.dogsVersus.DogResponse
 import com.astriex.catsvsdogs.databinding.FragmentVersusBinding
 import com.astriex.catsvsdogs.db.Vote
-import com.astriex.catsvsdogs.util.DoubleClickListener
 import com.astriex.catsvsdogs.util.hide
 import com.astriex.catsvsdogs.util.isConnected
 import com.astriex.catsvsdogs.util.show
@@ -110,7 +108,7 @@ class VersusFragment : Fragment(R.layout.fragment_versus) {
     }
 
     private fun loadImages() {
-        if(isConnected()) {
+        if (isConnected()) {
             showOnlineView()
             loadOnlineImages()
         } else {
@@ -119,10 +117,14 @@ class VersusFragment : Fragment(R.layout.fragment_versus) {
     }
 
     private fun showOfflineView() {
-        binding.ivDog.hide()
-        binding.ivCat.hide()
-        binding.tvError.show()
-        binding.btnRetry.show()
+        binding.apply {
+            ivDog.hide()
+            ivCat.hide()
+            cvCat.hide()
+            cvDog.hide()
+            tvError.show()
+            btnRetry.show()
+        }
     }
 
     private fun loadOnlineImages() {
@@ -135,10 +137,14 @@ class VersusFragment : Fragment(R.layout.fragment_versus) {
     }
 
     private fun showOnlineView() {
-        binding.ivDog.show()
-        binding.ivCat.show()
-        binding.tvError.hide()
-        binding.btnRetry.hide()
+        binding.apply {
+            ivDog.show()
+            ivCat.show()
+            cvCat.show()
+            cvDog.show()
+            tvError.hide()
+            btnRetry.hide()
+        }
     }
 
     private fun handleCatResponse(result: Response<CatResponse>) {
