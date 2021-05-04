@@ -18,7 +18,7 @@
         android:layout_marginBottom="50dp"
         android:gravity="center"
         android:text="Who won?"
-        android:textColor="@color/white"
+        android:textColor="@color/colorPrimary"
         android:textSize="40sp"
         android:textStyle="bold|italic" />
 

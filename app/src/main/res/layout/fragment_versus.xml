@@ -11,6 +11,7 @@
         android:id="@+id/cvCat"
         android:layout_width="350dp"
         android:layout_height="300dp"
+        android:backgroundTint="@color/pieChartCats"
         android:elevation="5dp"
         app:cardCornerRadius="20dp"
         app:layout_constraintBottom_toTopOf="@+id/cvDog"
@@ -29,7 +30,6 @@
                 android:layout_marginTop="28dp"
                 android:layout_marginBottom="69dp"
                 android:adjustViewBounds="true"
-                android:background="@drawable/image_border_cats"
                 android:contentDescription="cat image"
                 android:cropToPadding="true"
                 android:scaleType="centerCrop"
@@ -38,18 +38,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.044" />
-
-            <ImageView
-                android:id="@+id/ivCatLike"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/heart"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@id/ivCat"
-                app:layout_constraintEnd_toEndOf="@id/ivCat"
-                app:layout_constraintStart_toStartOf="@id/ivCat"
-                app:layout_constraintTop_toTopOf="@id/ivCat"
-                tools:visibility="visible" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -60,6 +48,7 @@
         android:layout_width="350dp"
         android:layout_height="300dp"
         android:layout_marginBottom="20dp"
+        android:backgroundTint="@color/pieChartDogs"
         android:elevation="5dp"
         app:cardCornerRadius="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -75,7 +64,6 @@
                 android:layout_width="316dp"
                 android:layout_height="254dp"
                 android:adjustViewBounds="true"
-                android:background="@drawable/image_border_dogs"
                 android:contentDescription="dog image"
                 android:cropToPadding="true"
                 android:scaleType="centerCrop"
@@ -83,18 +71,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
-            <ImageView
-                android:id="@+id/ivDogLike"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/heart"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="@+id/ivDog"
-                app:layout_constraintEnd_toEndOf="@+id/ivDog"
-                app:layout_constraintStart_toStartOf="@+id/ivDog"
-                app:layout_constraintTop_toTopOf="@+id/ivDog"
-                tools:visibility="visible" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
