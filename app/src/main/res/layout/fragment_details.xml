@@ -16,7 +16,7 @@
             android:paddingBottom="4dp">
 
             <ImageView
-                android:id="@+id/image_view"
+                android:id="@+id/ivPhoto"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
@@ -26,7 +26,7 @@
                 tools:src="@mipmap/ic_launcher_round" />
 
             <TextView
-                android:id="@+id/text_view_description"
+                android:id="@+id/tvDescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -36,7 +36,7 @@
                 tools:visibility="visible" />
 
             <TextView
-                android:id="@+id/text_view_creator"
+                android:id="@+id/tvCreator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -51,7 +51,7 @@
     </ScrollView>
 
     <ProgressBar
-        android:id="@+id/progress_bar"
+        android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center" />
