@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.astriex.catsvsdogs.R
 import com.astriex.catsvsdogs.data.networking.cats.catsVersus.CatResponse
 import com.astriex.catsvsdogs.data.networking.dogs.dogsVersus.DogResponse
@@ -22,6 +23,8 @@ import retrofit2.Response
 
 @AndroidEntryPoint
 class VersusFragment : Fragment(R.layout.fragment_versus) {
+    private lateinit var circularProgressDrawableCats: CircularProgressDrawable
+    private lateinit var circularProgressDrawableDogs: CircularProgressDrawable
     private var _binding: FragmentVersusBinding? = null
     private val binding
         get() = _binding!!
@@ -39,6 +42,8 @@ class VersusFragment : Fragment(R.layout.fragment_versus) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentVersusBinding.bind(view)
 
+        setupGlideCircularProgressDrawable()
+
         binding.ivCatVote.setOnClickListener {
             loadImages()
             saveCatVote()
@@ -47,6 +52,26 @@ class VersusFragment : Fragment(R.layout.fragment_versus) {
         binding.ivDogVote.setOnClickListener {
             loadImages()
             saveDogVote()
+        }
+    }
+
+    private fun setupGlideCircularProgressDrawable() {
+        circularProgressDrawableCats = CircularProgressDrawable(requireContext())
+        circularProgressDrawableCats.apply {
+            setStyle(CircularProgressDrawable.LARGE)
+            setColorSchemeColors(R.color.pieChartCats, R.color.pieChartDogs, R.color.colorAccent)
+            strokeWidth = 10f
+            centerRadius = 30f
+            start()
+        }
+
+        circularProgressDrawableDogs = CircularProgressDrawable(requireContext())
+        circularProgressDrawableDogs.apply {
+            setStyle(CircularProgressDrawable.LARGE)
+            setColorSchemeColors(R.color.pieChartCats, R.color.pieChartDogs, R.color.colorAccent)
+            strokeWidth = 10f
+            centerRadius = 30f
+            start()
         }
     }
 
@@ -84,7 +109,11 @@ class VersusFragment : Fragment(R.layout.fragment_versus) {
     private fun handleCatResponse(result: Response<CatResponse>) {
         if (result.isSuccessful) {
             val photo = result.body()?.get(0)
-            Glide.with(this).load(photo!!.url).transition(DrawableTransitionOptions.withCrossFade())
+            Glide.with(this)
+                .load(photo!!.url)
+                .transition(DrawableTransitionOptions.withCrossFade())
+                .placeholder(circularProgressDrawableCats)
+                .error(R.drawable.ic_error)
                 .into(binding.ivCat)
         } else {
             Toast.makeText(context, "error", Toast.LENGTH_SHORT).show()
@@ -94,7 +123,11 @@ class VersusFragment : Fragment(R.layout.fragment_versus) {
     private fun handleDogResponse(result: Response<DogResponse>) {
         if (result.isSuccessful) {
             val photo = result.body()?.get(0)
-            Glide.with(this).load(photo!!.url).transition(DrawableTransitionOptions.withCrossFade())
+            Glide.with(this)
+                .load(photo!!.url)
+                .transition(DrawableTransitionOptions.withCrossFade())
+                .placeholder(circularProgressDrawableDogs)
+                .error(R.drawable.ic_error)
                 .into(binding.ivDog)
         } else {
             Toast.makeText(context, "error", Toast.LENGTH_SHORT).show()
