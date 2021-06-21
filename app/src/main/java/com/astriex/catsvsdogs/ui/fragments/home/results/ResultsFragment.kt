@@ -76,7 +76,7 @@ class ResultsFragment : Fragment(R.layout.fragment_results) {
                 )
             )
             .drawText(true)
-            .textSize(60.toFloat())
+            .textSize(55.toFloat())
             .canTouch(true)
             .duration(2000);// draw pie animation duration
 

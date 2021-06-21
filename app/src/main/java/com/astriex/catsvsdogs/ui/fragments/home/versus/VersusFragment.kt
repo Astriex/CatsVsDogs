@@ -71,7 +71,7 @@ class VersusFragment : Fragment(R.layout.fragment_versus) {
         circularProgressDrawableCats.apply {
             setStyle(CircularProgressDrawable.LARGE)
             setColorSchemeColors(R.color.pieChartCats, R.color.pieChartDogs, R.color.colorAccent)
-            strokeWidth = 10f
+            strokeWidth = 5f
             centerRadius = 30f
             start()
         }
@@ -80,7 +80,7 @@ class VersusFragment : Fragment(R.layout.fragment_versus) {
         circularProgressDrawableDogs.apply {
             setStyle(CircularProgressDrawable.LARGE)
             setColorSchemeColors(R.color.pieChartCats, R.color.pieChartDogs, R.color.colorAccent)
-            strokeWidth = 10f
+            strokeWidth = 5f
             centerRadius = 30f
             start()
         }

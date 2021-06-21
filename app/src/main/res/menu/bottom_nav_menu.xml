@@ -23,7 +23,7 @@
     <item
         android:id="@+id/resultsFragment"
         android:title="Votes"
-        android:icon="@drawable/ic__results"
+        android:icon="@drawable/ic_pie_chart"
         app:showAsAction="ifRoom"/>
 
 </menu>
