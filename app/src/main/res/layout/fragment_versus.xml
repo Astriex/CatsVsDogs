@@ -9,8 +9,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvCat"
-        android:layout_width="350dp"
-        android:layout_height="300dp"
+        android:layout_width="330dp"
+        android:layout_height="260dp"
         android:backgroundTint="@color/pieChartCats"
         android:elevation="5dp"
         app:cardCornerRadius="20dp"
@@ -25,8 +25,8 @@
 
             <ImageView
                 android:id="@+id/ivCat"
-                android:layout_width="316dp"
-                android:layout_height="248dp"
+                android:layout_width="300dp"
+                android:layout_height="240dp"
                 android:layout_marginTop="28dp"
                 android:layout_marginBottom="69dp"
                 android:adjustViewBounds="true"
@@ -37,7 +37,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.044" />
+                app:layout_constraintVertical_bias="0.233" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -45,8 +45,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvDog"
-        android:layout_width="350dp"
-        android:layout_height="300dp"
+        android:layout_width="330dp"
+        android:layout_height="260dp"
         android:layout_marginBottom="20dp"
         android:backgroundTint="@color/pieChartDogs"
         android:elevation="5dp"
@@ -61,8 +61,8 @@
 
             <ImageView
                 android:id="@+id/ivDog"
-                android:layout_width="316dp"
-                android:layout_height="254dp"
+                android:layout_width="300dp"
+                android:layout_height="240dp"
                 android:adjustViewBounds="true"
                 android:contentDescription="dog image"
                 android:cropToPadding="true"
