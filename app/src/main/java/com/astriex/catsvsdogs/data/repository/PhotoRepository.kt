@@ -32,8 +32,6 @@ class PhotoRepository @Inject constructor(
 
     fun getCatVotes() = voteDao.getCatVotes()
 
-    suspend fun deleteVotes() = voteDao.deleteVotes()
-
     fun getVotes(): Flow<List<Vote>> = flow<List<Vote>> {
         val catVotes = getCatVotes()
         val dogVotes = getDogVotes()
