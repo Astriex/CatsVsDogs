@@ -177,8 +177,8 @@ class VersusFragment : Fragment(R.layout.fragment_versus) {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
     }
 }

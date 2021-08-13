@@ -4,25 +4,25 @@
 
     <item
         android:id="@+id/versusFragment"
-        android:title="Vs"
+        android:title="@string/vs_title"
         android:icon="@drawable/ic_versus"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/catsFragment"
-        android:title="Cats"
+        android:title="@string/cats_title"
         android:icon="@drawable/ic_cat"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/dogsFragment"
-        android:title="Dogs"
+        android:title="@string/dogs_title"
         android:icon="@drawable/ic_dog"
         app:showAsAction="always" />
 
     <item
         android:id="@+id/resultsFragment"
-        android:title="Votes"
+        android:title="@string/votes_title"
         android:icon="@drawable/ic_pie_chart"
         app:showAsAction="ifRoom"/>
 

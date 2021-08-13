@@ -23,6 +23,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
                 android:adjustViewBounds="true"
+                android:contentDescription="@string/photo"
                 tools:layout_height="300dp"
                 tools:scaleType="centerCrop"
                 tools:src="@mipmap/ic_launcher_round" />

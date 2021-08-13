@@ -5,6 +5,21 @@
       <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
     </configurations>
   </component>
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/melis/StudioProjects/CatsVsDogs/app/src/main/res/layout/fragment_cats.xml" value="0.12916666666666668" />
+        <entry key="..\:/Users/melis/StudioProjects/CatsVsDogs/app/src/main/res/layout/fragment_details.xml" value="0.12916666666666668" />
+        <entry key="..\:/Users/melis/StudioProjects/CatsVsDogs/app/src/main/res/layout/fragment_dogs.xml" value="0.12916666666666668" />
+        <entry key="..\:/Users/melis/StudioProjects/CatsVsDogs/app/src/main/res/layout/fragment_results.xml" value="0.12916666666666668" />
+        <entry key="..\:/Users/melis/StudioProjects/CatsVsDogs/app/src/main/res/layout/fragment_versus.xml" value="0.12916666666666668" />
+        <entry key="..\:/Users/melis/StudioProjects/CatsVsDogs/app/src/main/res/layout/item_cats_list.xml" value="0.12916666666666668" />
+        <entry key="..\:/Users/melis/StudioProjects/CatsVsDogs/app/src/main/res/layout/item_dogs_list.xml" value="0.12916666666666668" />
+        <entry key="..\:/Users/melis/StudioProjects/CatsVsDogs/app/src/main/res/layout/unsplash_photo_load_state_footer.xml" value="0.12916666666666668" />
+        <entry key="..\:/Users/melis/StudioProjects/CatsVsDogs/app/src/main/res/menu/bottom_nav_menu.xml" value="0.12916666666666668" />
+      </map>
+    </option>
+  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>

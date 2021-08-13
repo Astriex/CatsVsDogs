@@ -2,4 +2,18 @@
     <string name="app_name">Cats vs Dogs</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="photo">Photo</string>
+    <string name="cat_photo_description">Cat photo</string>
+    <string name="heart_image_description">Heart image</string>
+    <string name="dog_photo_description">Dog photo</string>
+    <string name="vs_title">Vs</string>
+    <string name="cats_title">Cats</string>
+    <string name="dogs_title">Dogs</string>
+    <string name="votes_title">Votes</string>
+    <string name="results_could_not_be_loaded_message">Results could not be loaded</string>
+    <string name="retry">Retry</string>
+    <string name="results_title">Who won?</string>
+    <string name="cat_image_description">cat image</string>
+    <string name="dog_image_description">dog image</string>
+    <string name="username_text">username</string>
 </resources>
