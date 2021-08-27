@@ -7,7 +7,7 @@
     android:background="@drawable/background_gradient"
     tools:context=".ui.fragments.home.versus.VersusFragment">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/cvCat"
         android:layout_width="330dp"
         android:layout_height="260dp"
@@ -41,9 +41,9 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/cvDog"
         android:layout_width="330dp"
         android:layout_height="260dp"
@@ -74,9 +74,9 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
-    <TextView
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tvError"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
