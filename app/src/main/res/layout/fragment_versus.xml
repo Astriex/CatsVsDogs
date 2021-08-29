@@ -9,15 +9,16 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cvCat"
-        android:layout_width="330dp"
-        android:layout_height="260dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
         android:backgroundTint="@color/pieChartCats"
         android:elevation="5dp"
         app:cardCornerRadius="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/cvDog"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintBottom_toTopOf="@+id/guidelineImageBottom"
+        app:layout_constraintEnd_toEndOf="@id/guidelineMainEnd"
+        app:layout_constraintStart_toStartOf="@id/guidelineMainStart"
+        app:layout_constraintTop_toBottomOf="@id/guidelineMainTop">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -25,10 +26,12 @@
 
             <ImageView
                 android:id="@+id/ivCat"
-                android:layout_width="300dp"
-                android:layout_height="240dp"
-                android:layout_marginTop="28dp"
-                android:layout_marginBottom="69dp"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/cat_image_description"
                 android:cropToPadding="true"
@@ -36,8 +39,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.233" />
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -45,15 +47,16 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cvDog"
-        android:layout_width="330dp"
-        android:layout_height="260dp"
-        android:layout_marginBottom="20dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
         android:backgroundTint="@color/pieChartDogs"
         android:elevation="5dp"
         app:cardCornerRadius="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintBottom_toTopOf="@id/guidelineMainBottom"
+        app:layout_constraintEnd_toEndOf="@id/guidelineMainEnd"
+        app:layout_constraintStart_toStartOf="@id/guidelineMainStart"
+        app:layout_constraintTop_toBottomOf="@+id/guidelineImageTop">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -61,8 +64,12 @@
 
             <ImageView
                 android:id="@+id/ivDog"
-                android:layout_width="300dp"
-                android:layout_height="240dp"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/dog_image_description"
                 android:cropToPadding="true"
@@ -80,22 +87,21 @@
         android:id="@+id/tvError"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="276dp"
+        android:layout_marginTop="16dp"
         android:text="@string/results_could_not_be_loaded_message"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold"
         android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guidelineMainEnd"
+        app:layout_constraintStart_toStartOf="@id/guidelineMainStart"
+        app:layout_constraintTop_toBottomOf="@id/guidelineImageBottom"
         tools:visibility="visible" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnRetry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:text="@string/retry"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -105,5 +111,47 @@
         app:layout_constraintTop_toBottomOf="@+id/tvError"
         app:layout_constraintVertical_bias="0.01"
         tools:visibility="visible" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineMainTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineImageBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineMainStart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineMainEnd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineImageTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineMainBottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.95" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
