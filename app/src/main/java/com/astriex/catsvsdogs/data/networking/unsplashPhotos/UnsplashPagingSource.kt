@@ -28,7 +28,7 @@ class UnsplashPagingSource @Inject constructor(
 
             LoadResult.Page(
                 data = photos,
-                prevKey = if (position == 1) null else position - 1,
+                prevKey = if (position == 0) null else position - 1,
                 nextKey = if (photos.isEmpty()) null else position + 1
             )
         } catch (e: IOException) {
