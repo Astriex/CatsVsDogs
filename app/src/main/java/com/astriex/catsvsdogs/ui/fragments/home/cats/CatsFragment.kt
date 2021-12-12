@@ -7,6 +7,8 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import com.astriex.catsvsdogs.R
@@ -15,7 +17,6 @@ import com.astriex.catsvsdogs.data.networking.unsplashPhotos.UnsplashPhotoLoadSt
 import com.astriex.catsvsdogs.databinding.FragmentCatsBinding
 import com.astriex.catsvsdogs.db.Vote
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -63,7 +64,7 @@ class CatsFragment : Fragment(R.layout.fragment_cats), CatVoteListener {
 
     override fun saveCatVote() {
         var oldVote: Vote? = null
-        CoroutineScope(Dispatchers.IO).launch {
+        viewLifecycleOwner.lifecycleScope.launch(Dispatchers.IO) {
             oldVote = viewModel.getCatVotes()
             viewModel.saveVote(Vote(oldVote!!.count.plus(1), oldVote!!.catOrDog))
         }

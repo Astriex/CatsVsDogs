@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.astriex.catsvsdogs.R
 import com.astriex.catsvsdogs.data.networking.cats.catsVersus.CatResponse
@@ -88,7 +89,7 @@ class VersusFragment : Fragment(R.layout.fragment_versus) {
 
     private fun saveDogVote() {
         var oldVote: Vote? = null
-        CoroutineScope(Dispatchers.IO).launch {
+        lifecycleScope.launch(Dispatchers.IO) {
             oldVote = viewModel.getDogVotes()
             viewModel.saveVote(Vote(oldVote!!.count.plus(1), oldVote!!.catOrDog))
         }
@@ -96,7 +97,7 @@ class VersusFragment : Fragment(R.layout.fragment_versus) {
 
     private fun saveCatVote() {
         var oldVote: Vote? = null
-        CoroutineScope(Dispatchers.IO).launch {
+        lifecycleScope.launch(Dispatchers.IO) {
             oldVote = viewModel.getCatVotes()
             viewModel.saveVote(Vote(oldVote!!.count.plus(1), oldVote!!.catOrDog))
         }
@@ -128,7 +129,7 @@ class VersusFragment : Fragment(R.layout.fragment_versus) {
     }
 
     private fun loadOnlineImages() {
-        CoroutineScope(Dispatchers.Main).launch {
+        lifecycleScope.launch(Dispatchers.Main) {
             val resultCat = viewModel.getCatPhoto()
             val resultDog = viewModel.getDogPhoto()
             handleCatResponse(resultCat)

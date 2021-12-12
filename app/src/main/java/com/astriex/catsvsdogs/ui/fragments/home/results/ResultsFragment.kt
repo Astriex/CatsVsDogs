@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat.getColor
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import com.astriex.catsvsdogs.R
 import com.astriex.catsvsdogs.databinding.FragmentResultsBinding
 import com.astriex.catsvsdogs.db.Vote
@@ -41,13 +42,12 @@ class ResultsFragment : Fragment(R.layout.fragment_results) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentResultsBinding.bind(view)
-
     }
 
     @InternalCoroutinesApi
     override fun onResume() {
         super.onResume()
-        CoroutineScope(Dispatchers.Main).launch {
+        lifecycleScope.launch(Dispatchers.IO) {
             getVotes()
         }
     }
@@ -86,8 +86,8 @@ class ResultsFragment : Fragment(R.layout.fragment_results) {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
     }
 }
