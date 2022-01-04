@@ -1,6 +1,8 @@
 package com.astriex.catsvsdogs.ui.fragments.home.cats
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import androidx.paging.cachedIn
 import com.astriex.catsvsdogs.data.repository.PhotoRepository
 import com.astriex.catsvsdogs.db.Vote
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -13,5 +15,5 @@ class CatsViewModel @Inject constructor(private val repository: PhotoRepository)
 
     suspend fun saveVote(vote: Vote) = repository.saveVote(vote)
 
-    fun getCatPhotos(query: String) = repository.getSearchResults(query)
+    fun getCatPhotos(query: String) = repository.getSearchResults(query).cachedIn(viewModelScope)
 }
