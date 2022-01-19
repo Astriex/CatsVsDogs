@@ -1,8 +1,6 @@
 # CatsVsDogs
 A  fun app to find out whether you like cats or dogs based on liking their images with results presented in a form of a pie chart. 
 
-Technologies used: MVVM + Retrofit + Paging 3 + Glide + Coroutines + Navigation component + View Binding + Dagger Hilt
-
 ## Tech used
 * MVVM
 * Retrofit
