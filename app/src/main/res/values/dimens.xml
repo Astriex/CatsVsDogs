@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="large_txt_size">20sp</dimen>
+    <dimen name="xxl_txt_size">40sp</dimen>
+
+    <dimen name="detail_screen_image_height">300dp</dimen>
+
+    <dimen name="card_corner_radius_image_detail">20dp</dimen>
+    <dimen name="results_card_elevation">5dp</dimen>
+    <dimen name="card_corner_radius_image_background">20dp</dimen>
+    <dimen name="results_card_corner_radius">30dp</dimen>
+
+    <dimen name="xs_padding_margin">4dp</dimen>
+    <dimen name="small_padding_margin">8dp</dimen>
+    <dimen name="med_padding_margin">16dp</dimen>
+    <dimen name="large_padding_margin">20dp</dimen>
+    <dimen name="xl_padding_margin">24dp</dimen>
+    <dimen name="xxl_padding_margin">30dp</dimen>
+    <dimen name="xxxl_padding_margin">70dp</dimen>
+
+    <dimen name="gradient_layout_height">40dp</dimen>
+    <dimen name="load_layout_height">130dp</dimen>
+
+</resources>

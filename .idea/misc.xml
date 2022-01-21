@@ -8,10 +8,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/melis/StudioProjects/CatsVsDogs/app/src/main/res/drawable/background_gradient.xml" value="0.24537037037037038" />
+        <entry key="..\:/Users/melis/StudioProjects/CatsVsDogs/app/src/main/res/drawable/gradient.xml" value="0.24537037037037038" />
+        <entry key="..\:/Users/melis/StudioProjects/CatsVsDogs/app/src/main/res/drawable/heart.xml" value="0.24537037037037038" />
+        <entry key="..\:/Users/melis/StudioProjects/CatsVsDogs/app/src/main/res/drawable/image_border_cats.xml" value="0.24537037037037038" />
+        <entry key="..\:/Users/melis/StudioProjects/CatsVsDogs/app/src/main/res/drawable/image_border_dogs.xml" value="0.24537037037037038" />
         <entry key="..\:/Users/melis/StudioProjects/CatsVsDogs/app/src/main/res/layout/activity_main.xml" value="0.2212962962962963" />
         <entry key="..\:/Users/melis/StudioProjects/CatsVsDogs/app/src/main/res/layout/fragment_cats.xml" value="0.264" />
         <entry key="..\:/Users/melis/StudioProjects/CatsVsDogs/app/src/main/res/layout/fragment_details.xml" value="0.264" />
-        <entry key="..\:/Users/melis/StudioProjects/CatsVsDogs/app/src/main/res/layout/fragment_dogs.xml" value="0.2" />
+        <entry key="..\:/Users/melis/StudioProjects/CatsVsDogs/app/src/main/res/layout/fragment_dogs.xml" value="0.264" />
         <entry key="..\:/Users/melis/StudioProjects/CatsVsDogs/app/src/main/res/layout/fragment_results.xml" value="0.2" />
         <entry key="..\:/Users/melis/StudioProjects/CatsVsDogs/app/src/main/res/layout/fragment_versus.xml" value="0.264" />
         <entry key="..\:/Users/melis/StudioProjects/CatsVsDogs/app/src/main/res/layout/item_cats_list.xml" value="0.264" />
