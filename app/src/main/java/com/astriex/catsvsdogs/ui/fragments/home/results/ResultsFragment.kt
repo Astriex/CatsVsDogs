@@ -75,9 +75,9 @@ class ResultsFragment : Fragment(R.layout.fragment_results) {
                     "dogs"
                 )
             )
-            .pieRadius(220.0f)
+            .pieRadius(130.0f)
             .drawText(true)
-            .textSize(50.toFloat())
+            .textSize(30.toFloat())
             .canTouch(true)
             .strokeWidth(60)
             .duration(2000);// draw pie animation duration
