@@ -17,10 +17,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.InternalCoroutinesApi
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.asFlow
-import kotlinx.coroutines.flow.flatMapConcat
-import kotlinx.coroutines.flow.toList
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -54,8 +51,9 @@ class ResultsFragment : Fragment(R.layout.fragment_results) {
 
     @InternalCoroutinesApi
     private suspend fun getVotes() {
-        val flatList: List<Vote> = viewModel.loadVotes().flattenToList()
-        drawPie(flatList[0], flatList[1])
+        viewModel.loadVotes().collect {
+            drawPie(it[0], it[1])
+        }
     }
 
     private fun drawPie(catVotes: Vote, dogVotes: Vote) {
@@ -93,7 +91,3 @@ class ResultsFragment : Fragment(R.layout.fragment_results) {
         _binding = null
     }
 }
-
-private suspend fun <T> Flow<List<T>>.flattenToList() = flatMapConcat {
-    it.asFlow()
-}.toList()
